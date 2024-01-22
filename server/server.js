@@ -22,6 +22,8 @@ app.use(morgan('dev'))
 
 //ROuTES
 app.use('/api/v1/auth', require("./routes/userRoutes"));
+
+app.use('/api/v1/post', require("./routes/postRoutes"));
 // app.get('',(req, res)=>{
 // res.status(200).json({
 //     success:true,
