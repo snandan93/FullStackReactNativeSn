@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { Alert } from "react-native";
 
 //context
 const PostContext = createContext();
@@ -14,6 +15,7 @@ const PostProvider = ({ children }) => {
     setLoading(true);
     try {
       const { data } = await axios.get("/post/get-all-post");
+      // alert(JSON.stringify(data.posts))
       setLoading(false);
       setPosts(data?.posts);
     } catch (error) {

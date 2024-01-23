@@ -36,5 +36,28 @@ return res.status(500).send({
     }
 
 };
+//GEt all post
 
-module.exports={createPostController}
+const getAllPostsController=async(req,res)=>{
+
+try {
+   const posts = await postModel.find()
+   .populate('postedBy', "_id name")
+   .sort({createdAt:-1});
+res.status(200).send({
+    success:true,
+    message:'All Post Data',
+    posts
+})
+} catch (error) {
+    console.log(error);
+    res.status(500).send({
+        success:false,
+        message:'Error in get Api post',
+        error
+
+    })
+}
+
+}
+module.exports={createPostController, getAllPostsController}
